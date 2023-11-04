@@ -39,7 +39,13 @@ Route::get('/', function () {
 //        echo '張貼時間: '.$post->created_at.'<br>';
 //    }
 //    dd($post);
-    
-    $posts = Post::where('id','<',10)->orderBy('id','DESC')->get();
-    dd($posts);
+
+//    $posts = Post::where('id','<',10)->orderBy('id','DESC')->get();
+//    dd($posts);
+
+    $post=Post::find(1);
+    $post->update([
+        'title'=>'updated title',
+        'content'=>'updated content',
+    ]);
 });
