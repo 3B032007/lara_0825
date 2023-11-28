@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +69,18 @@ Route::get('/', function () {
 //    $fourthPost = Post::find(4);
 //    dd($fourthPost);
 
-    $lastPost = Post::orderBy('id','DESC')->first();
-    dd($lastPost);
+//    $lastPost = Post::orderBy('id','DESC')->first();
+//    dd($lastPost);
+
+    $post = Post::find(2);
+    echo '標題： '.$post->title.'<br>';
+    echo '內容： '.$post->content.'<br>';
+    echo '------------------------'.'<br>';
+    $comments = $post->comments()->get();
+    foreach ($comments as $comment) {
+        echo '留言： ' . $comment->content . "<br>";
+        echo '------------------------' . '<br>';
+    }
 
 
 
